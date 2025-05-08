@@ -142,6 +142,22 @@ public class DialogContent extends ParentPage{
     @FindBy(xpath = "//*[text()='Open New Account']")
     public WebElement openNewAccountButton;
 
+    @FindBy(xpath = "//input[@name='username']")
+    public WebElement LogInUsername;
+
+    @FindBy(xpath = "//input[@name='password']")
+    public WebElement LogInPassword;
+
+    @FindBy(xpath = "//input[@value='Log In']")
+    public WebElement LogInButton;
+
+    @FindBy(xpath = "//p[@class='smallText']")
+    public WebElement LogInSuccessText;
+
+    @FindBy(xpath = "//p[@class='error']")
+    public WebElement LogInErrorText;
+
+
 
 
 
@@ -169,6 +185,7 @@ public class DialogContent extends ParentPage{
             case "recipientAccountSelector": return this.recipientAccountSelector;
             case "transferButton": return this.transferButton;
             case "amount": return this.amount;
+
 
         }
         return null;
