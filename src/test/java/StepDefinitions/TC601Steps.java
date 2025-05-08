@@ -25,8 +25,8 @@ public class TC601Steps {
 
     @And("Click the register button")
     public void clickTheRegisterButton() {
-        ln.registerButton.click();
-        Assert.assertTrue(ln.registerButton.isEnabled(),"Register butonuna tıklanmadı.");
+        ln.lnRegisterButton.click();
+        Assert.assertTrue(ln.lnRegisterButton.isEnabled(),"Register butonuna tıklanmadı.");
     }
 
 

@@ -1,6 +1,7 @@
 package Pages;
 
 import Utilities.GWD;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -11,112 +12,135 @@ import java.util.List;
 
 public class DialogContent extends ParentPage{
 
-    public DialogContent() {
+    public DialogContent(WebDriver driver) {
         PageFactory.initElements(GWD.getDriver(), this);
     }
 
-    @FindBy(xpath="//*[@id='customer.firstName']")
-    public WebElement registerFirstNameInput;
+    @FindBy(xpath = "//input[@name='payee.name']")
+    public WebElement payeName;
 
-    @FindBy(xpath="//*[@id='customer.lastName']")
-    public WebElement registerLastNameInput;
+    @FindBy(xpath = "//input[@name='payee.address.street']")
+    public WebElement payeAddressStreet;
 
-    @FindBy(xpath="//*[@id='customer.address.street']")
-    public WebElement registerAddressInput;
+    @FindBy(xpath = "//input[@name='payee.address.city']")
+    public WebElement payeAddressCity;
 
-    @FindBy(xpath="//*[@id='customer.address.city']")
-    public WebElement registerCityInput;
+    @FindBy(xpath = "//input[@name='payee.address.state']")
+    public WebElement payeAddressState;
 
-    @FindBy(xpath="//*[@id='customer.address.state']")
-    public WebElement registerStateInput;
+    @FindBy(xpath = "//input[@name='payee.address.zipCode']")
+    public WebElement payeAddressZipCode;
 
-    @FindBy(xpath="//*[@id='customer.address.zipCode']")
-    public WebElement registerZipCodeInput;
+    @FindBy(xpath = "//input[@name='payee.phoneNumber']")
+    public WebElement payePhoneNumber;
 
-    @FindBy(xpath="//*[@id='customer.phoneNumber']")
-    public WebElement registerPhoneNumberInput;
+    @FindBy(xpath = "//input[@name='payee.accountNumber']")
+    public WebElement payeAccountNumber;
 
-    @FindBy(xpath="//*[@id='customer.ssn']")
-    public WebElement registerSsnInput;
+    @FindBy(xpath = "//input[@name='verifyAccount']")
+    public WebElement verifyAccount;
 
-    @FindBy(xpath="//*[@id='customer.username']")
-    public WebElement registerUsernameInput;
+    @FindBy(xpath = "//input[@name='amount']")
+    public WebElement amountOdenecekTutar;
 
-    @FindBy(xpath="//*[@id='customer.password']")
-    public WebElement registerPasswordInput;
-
-    @FindBy(xpath="//*[@id='repeatedPassword']")
-    public WebElement registerRePasswordInput;
-
-    @FindBy(xpath="//*[@value='Register']")
-    public WebElement registerButton;
-
-    @FindBy(xpath = "//*[@class='smallText']")
-    public WebElement welcomeText;
-
-    @FindBy(xpath = "//*[@class='title']")
-    public WebElement errorText;
-
-    @FindBy(xpath = "//*[@name='payee.name']")
-    public WebElement billPayeeName;
-
-    @FindBy(xpath = "//*[@name='payee.address.street']")
-    public WebElement billPayeeAddress;
-
-    @FindBy(xpath = "//*[@name='payee.address.city']")
-    public WebElement billPayeeCity;
-
-    @FindBy(xpath = "//*[@name='payee.address.state']")
-    public WebElement billPayeeState;
-
-    @FindBy(xpath = "//*[@name='payee.address.zipCode']")
-    public WebElement billPayeeZipCode;
-
-    @FindBy(xpath = "//*[@name='payee.phoneNumber']")
-    public WebElement billPayeePhoneNumber;
-
-    @FindBy(xpath = "//*[@name='payee.accountNumber']")
-    public WebElement billPayeeAccountNumber;
-
-    @FindBy(xpath = "//*[@name='verifyAccount']")
-    public WebElement billPayeeVerifyAccountNumber;
-
-    @FindBy(xpath = "//*[@name='amount']")
-    public WebElement billPayeeAmount;
-
-    @FindBy(xpath = "//*[@name='fromAccountId']")
-    public WebElement billPayeeFromAccountSelect;
-
-    @FindBy(xpath = "//*[@value='Send Payment']")
-    public WebElement sendPaymentButton;
+    @FindBy(xpath = "//input[@value='Send Payment']")
+    public WebElement buttonSendPayment;
 
     @FindBy(xpath = "//*[text()='Bill Payment Complete']")
-    public WebElement billCompleteText;
-
-    @FindBy(xpath = "//*[@id='amount']")
-    public WebElement amountText;
-
-    @FindBy(xpath = "//*[@id='fromAccountId']")
-    public WebElement fromAccountText;
+    public WebElement successfulMessageBillPaymentComplate;
 
     @FindBy(xpath = "//*[@id='accountTable']//tbody//a")
-    public WebElement account;
+    public WebElement Account;
 
-    @FindBy(xpath = "//*[text()='Bill Payment to İski Su Faturasi']")
-    public List<WebElement> paymentButtons;
+    @FindBy(xpath = "//*[@id='transactionTable']//a")
+    public List<WebElement> successfulMessageBillPaymentToGasBill;
 
-    @FindBy(xpath = "//td[b[text()='Transaction ID:']]/following-sibling::td")
-    public WebElement transactionIDText;
+    @FindBy(xpath = "//*[text()='05-05-2025']")
+    public WebElement historyDatee;
 
-    @FindBy(xpath = "//*[text()='Date:']/following::td")
-    public WebElement dateText;
+    @FindBy(id = "customer.firstName")
+    public WebElement firstName;
 
-    @FindBy(xpath = "(//*[text()='Description:']/following::td)[1]")
-    public WebElement descriptionText;
+    @FindBy(id = "customer.lastName")
+    public WebElement lastName;
 
-    @FindBy(xpath = "//*[text()='Amount:']/following::td")
-    public WebElement detailsAmountText;
+    @FindBy(id = "customer.address.street")
+    public WebElement Address;
 
+    @FindBy(id = "customer.address.city")
+    public WebElement City;
+
+    @FindBy(id = "customer.address.state")
+    public WebElement State;
+
+    @FindBy(id = "customer.address.zipCode")
+    public WebElement ZipCode;
+
+    @FindBy(id = "customer.phoneNumber")
+    public WebElement Phone;
+
+    @FindBy(id = "customer.ssn")
+    public WebElement SSN;
+
+    @FindBy(id = "customer.username")
+    public WebElement UserName;
+
+    @FindBy(id = "customer.password")
+    public WebElement Password;
+
+    @FindBy(id = "repeatedPassword")
+    public WebElement Confirm;
+
+    @FindBy(xpath = "//input[@class='button' and @value='Register']")
+    public WebElement registerButton2;
+
+    @FindBy(xpath = "//*[contains(text(),'successfully')]")
+    public WebElement verifyMessage;
+
+    @FindBy(xpath = "//select[@id='type']")
+    public WebElement accountTypeSelect;
+
+    @FindBy(xpath = "//*[text()='SAVINGS']")
+    public WebElement savingSelect;
+
+    @FindBy(xpath = "//input[@value='Open New Account']")
+    public WebElement openNewAccountLogin;
+
+    @FindBy(xpath = "//p[text()='Congratulations, your account is now open.']")
+    public WebElement assertAccountText;
+
+    @FindBy(xpath = "//*[@id='newAccountId']")
+    public WebElement accountNumberClick;
+
+    @FindBy(xpath = "//*[@id='accountId']")
+    public WebElement newAccountNumberAssert;
+
+    @FindBy(xpath = "//*[@id='accountType']")
+    public WebElement newAccountTypeAssert;
+
+    @FindBy(name = "username")
+    public WebElement userNameLogin;
+
+    @FindBy(name = "password")
+    public WebElement passwordLogin;
+
+    @FindBy(xpath = "//input[@value='Log In']")
+    public WebElement loginButton;
+
+    @FindBy(id = "amount")
+    public WebElement amount;
+
+    @FindBy(name = "fromAccountId")
+    public WebElement senderAccountSelector;
+
+    @FindBy(name = "toAccountId")
+    public WebElement recipientAccountSelector;
+
+    @FindBy(xpath = "//input[@value='Transfer']")
+    public WebElement transferButton;
+
+    @FindBy(xpath = "//*[text()='Open New Account']")
+    public WebElement openNewAccountButton;
 
 
 
@@ -126,40 +150,25 @@ public class DialogContent extends ParentPage{
     {
         switch (strElement)
         {
-            case "registerFirstNameInput" : return this.registerFirstNameInput;
-            case "registerLastNameInput" : return this.registerLastNameInput;
-            case "registerAddressInput" : return this.registerAddressInput;
-            case "registerCityInput" : return this.registerCityInput;
-            case "registerStateInput" : return this.registerStateInput;
-            case "registerZipCodeInput" : return this.registerZipCodeInput;
-            case "registerPhoneNumberInput" : return this.registerPhoneNumberInput;
-            case "registerSsnInput" : return this.registerSsnInput;
-            case "registerUsernameInput" : return this.registerUsernameInput;
-            case "registerPasswordInput" : return this.registerPasswordInput;
-            case "registerRePasswordInput" : return this.registerRePasswordInput;
-            case "registerButton" : return this.registerButton;
-            case "welcomeText" : return this.welcomeText;
-            case "errorText" : return this.errorText;
-            case "billPayeeName" : return this.billPayeeName;
-            case "billPayeeAddress" : return this.billPayeeAddress;
-            case "billPayeeCity" : return this.billPayeeCity;
-            case "billPayeeState" : return this.billPayeeState;
-            case "billPayeeZipCode" : return this.billPayeeZipCode;
-            case "billPayeePhoneNumber" : return this.billPayeePhoneNumber;
-            case "billPayeeAccountNumber" : return this.billPayeeAccountNumber;
-            case "billPayeeVerifyAccountNumber" : return this.billPayeeVerifyAccountNumber;
-            case "billPayeeAmount" : return this.billPayeeAmount;
-            case "billPayeeFromAccountSelect" : return this.billPayeeFromAccountSelect;
-            case "sendPaymentButton" : return this.sendPaymentButton;
-            case "billCompleteText" : return this.billCompleteText;
-            case "amountText" : return this.amountText;
-            case "fromAccountText" : return this.fromAccountText;
-            case "account" : return this.account;
-            case "transactionIDText" : return this.transactionIDText;
-            case "dateText" : return this.dateText;
-            case "descriptionText" : return this.descriptionText;
-            case "detailsAmountText" : return this.detailsAmountText;
-
+            case "firstName": return this.firstName;
+            case "lastName": return this.lastName;
+            case "Address": return this.Address;
+            case "City": return this.City;
+            case "State": return this.State;
+            case "ZipCode": return this.ZipCode;
+            case "Phone": return this.Phone;
+            case "SSN": return this.SSN;
+            case "UserName": return this.UserName;
+            case "Password": return this.Password;
+            case "Confirm": return this.Confirm;
+            case "openNewAccountLogin": return this.openNewAccountLogin;
+            case "userNameLogin": return this.userNameLogin;
+            case "passwordLogin": return this.passwordLogin;
+            case "loginButton": return this.loginButton;
+            case "senderAccountSelector": return this.senderAccountSelector;
+            case "recipientAccountSelector": return this.recipientAccountSelector;
+            case "transferButton": return this.transferButton;
+            case "amount": return this.amount;
 
         }
         return null;
