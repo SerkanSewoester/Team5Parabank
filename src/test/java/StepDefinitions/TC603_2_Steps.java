@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import Pages.DialogContent;
 import Pages.LeftNav;
+import Utilities.FakerUtil;
 import Utilities.GWD;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -9,8 +10,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class TC603_2_Steps {
-    LeftNav ln = new LeftNav();
-    DialogContent dc = new DialogContent();
+    LeftNav ln = new LeftNav(GWD.getDriver());
+    DialogContent dc = new DialogContent(GWD.getDriver());
     @Given("the user is logged into the Para Bank website")
     public void theUserIsLoggedIntoTheParaBankWebsite() throws InterruptedException {
         GWD.getDriver().get("https://parabank.parasoft.com/parabank/index.htm?ConnType=JDBC");
@@ -27,28 +28,28 @@ public class TC603_2_Steps {
 
     @And("the user fills in the water bill form with valid random data")
     public void theUserFillsInTheWaterBillFormWithValidRandomData() {
-        dc.mySendKeys(dc.billPayeeName,"İski Su Faturasi");
-        dc.mySendKeys(dc.billPayeeAddress,FakerUtil.getAddress());
-        dc.mySendKeys(dc.billPayeeCity,FakerUtil.getCity());
-        dc.mySendKeys(dc.billPayeeState,FakerUtil.getState());
-        dc.mySendKeys(dc.billPayeeZipCode,FakerUtil.getZipCode());
-        dc.mySendKeys(dc.billPayeePhoneNumber,FakerUtil.getPhoneNumber());
-        dc.mySendKeys(dc.billPayeeAccountNumber,"12345");
-        dc.mySendKeys(dc.billPayeeVerifyAccountNumber,"12345");
-        dc.mySendKeys(dc.billPayeeAmount,"1");
+        dc.mySendKeys(dc.payeName,"İski Su Faturasi");
+        dc.mySendKeys(dc.payeAddressStreet, FakerUtil.getAddress());
+        dc.mySendKeys(dc.payeAddressCity,FakerUtil.getCity());
+        dc.mySendKeys(dc.payeAddressState,FakerUtil.getState());
+        dc.mySendKeys(dc.payeAddressZipCode,FakerUtil.getZipCode());
+        dc.mySendKeys(dc.payePhoneNumber,FakerUtil.getPhoneNumber());
+        dc.mySendKeys(dc.payeAccountNumber,"12345");
+        dc.mySendKeys(dc.verifyAccount,"12345");
+        dc.mySendKeys(dc.amountOdenecekTutar,"1");
     }
 
     @And("the user submits the payment")
     public void theUserSubmitsThePayment() {
-        dc.myClick(dc.sendPaymentButton);
+        dc.myClick(dc.buttonSendPayment);
     }
 
     @Then("the payment confirmation should display the correct amount and account number")
     public void thePaymentConfirmationShouldDisplayTheCorrectAmountAndAccountNumber() throws InterruptedException {
         ln.myClick(ln.lnAccountsOverview);
-        dc.myClick(dc.account);
+        dc.myClick(dc.Account);
         Thread.sleep(5000);
-        dc.myClick(dc.paymentButtons.get(dc.paymentButtons.size()-1));
+        dc.myClick(dc.successfulMessageBillPaymentToGasBill.get(dc.successfulMessageBillPaymentToGasBill.size()-1));
         /*
         Sadece Transaction Details bolumundeki assertler yapilmadi.!
          */

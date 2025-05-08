@@ -4,6 +4,7 @@ import Utilities.GWD;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -32,5 +33,15 @@ public class ParentPage {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
+    public static String random(int max){
+        int number =  (int)(Math.random()* max);
+        return String.valueOf(number);
+    }
 
+
+    public void selectByIndex(WebElement e, int a)
+    {
+        Select select = new Select(e);
+        select.selectByIndex(a);
+    }
 }
