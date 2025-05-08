@@ -19,16 +19,6 @@ public class TC604Steps {
     @Given("Navigate to open new account page")
     public void navigateToOpenNewAccountPage()
     {
-        GWD.getDriver().get("https://parabank.parasoft.com/");
-        WebElement username=GWD.getDriver().findElement(By.xpath("//*[@name='username']"));
-        ln.mySendKeys(username,"jackm123");
-
-        WebElement password=GWD.getDriver().findElement(By.xpath("//*[@name='password']"));
-        ln.mySendKeys(password,"Team5.123");
-
-        WebElement loginClick=GWD.getDriver().findElement(By.xpath("//*[@value='Log In']"));
-        ln.myClick(loginClick);
-
         ln.myClick(ln.openNewAccountButton);
     }
 
