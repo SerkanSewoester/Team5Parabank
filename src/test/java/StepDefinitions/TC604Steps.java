@@ -17,8 +17,7 @@ public class TC604Steps {
     String accountNumber="";
 
     @Given("Navigate to open new account page")
-    public void navigateToOpenNewAccountPage()
-    {
+    public void navigateToOpenNewAccountPage() {
         ln.myClick(ln.openNewAccountButton);
     }
 
@@ -27,31 +26,29 @@ public class TC604Steps {
         Thread.sleep(2000);
             new Select(dc.accountTypeSelect).selectByVisibleText(accountType);
         Thread.sleep(2000);
+
     }
 
     @And("User clicks open new account button")
-    public void userClicksOpenNewAccountButton()
-    {
+    public void userClicksOpenNewAccountButton() {
         dc.myClick(dc.openNewAccountLogin);
     }
 
     @And("User can see success message")
-    public void userCanSeeSuccessMessage()
-    {
+    public void userCanSeeSuccessMessage() {
         dc.verifyMessageContainsText(dc.assertAccountText,"congratulations, your account is now open.");
         accountNumber=dc.accountNumberClick.getText();
+
     }
 
     @And("User clicks on new account number")
-    public void userClicksOnNewAccountNumber()
-    {
+    public void userClicksOnNewAccountNumber() {
         dc.myClick(dc.accountNumberClick);
     }
 
     @Then("The user must be able to verify the account number and type he has opened.")
-    public void theUserMustBeAbleToVerifyTheAccountNumberAndTypeHeHasOpened()
-    {
-        dc.verifyMessageContainsText(dc.newAccountTypeAssert,"checking");
+    public void theUserMustBeAbleToVerifyTheAccountNumberAndTypeHeHasOpened() {
+        dc.verifyMessageContainsText(dc.newAccountTypeAssert,"CHECKING");
         dc.verifyMessageContainsText(dc.newAccountNumberAssert,accountNumber);
     }
 }

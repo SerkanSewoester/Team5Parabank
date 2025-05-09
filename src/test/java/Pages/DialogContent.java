@@ -47,7 +47,7 @@ public class DialogContent extends ParentPage{
     public WebElement buttonSendPayment;
 
     @FindBy(xpath = "//*[text()='Bill Payment Complete']")
-    public WebElement successfulMessageBillPaymentComplate;
+    public WebElement successfulMessageBillPaymentComplete;
 
     @FindBy(xpath = "//*[@id='accountTable']//tbody//a")
     public WebElement Account;

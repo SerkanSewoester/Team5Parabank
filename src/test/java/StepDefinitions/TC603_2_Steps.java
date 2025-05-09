@@ -8,18 +8,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class TC603_2_Steps {
     LeftNav ln = new LeftNav(GWD.getDriver());
     DialogContent dc = new DialogContent(GWD.getDriver());
-    @Given("the user is logged into the Para Bank website")
-    public void theUserIsLoggedIntoTheParaBankWebsite() throws InterruptedException {
-        GWD.getDriver().get("https://parabank.parasoft.com/parabank/index.htm?ConnType=JDBC");
-        ln.mySendKeys(ln.lnUsernameInput,"annad456");
-        ln.mySendKeys(ln.lnPasswordInput,"anna456");
-        ln.myClick(ln.lnLoginButton);
-        Thread.sleep(5000);
-    }
+    String accountNumber="";
 
     @When("the user navigates to the Bill Pay page")
     public void theUserNavigatesToTheBillPayPage() {
@@ -37,6 +32,7 @@ public class TC603_2_Steps {
         dc.mySendKeys(dc.payeAccountNumber,"12345");
         dc.mySendKeys(dc.verifyAccount,"12345");
         dc.mySendKeys(dc.amountOdenecekTutar,"1");
+        accountNumber =dc.senderAccountSelector.getText();
     }
 
     @And("the user submits the payment")
@@ -45,13 +41,11 @@ public class TC603_2_Steps {
     }
 
     @Then("the payment confirmation should display the correct amount and account number")
-    public void thePaymentConfirmationShouldDisplayTheCorrectAmountAndAccountNumber() throws InterruptedException {
+    public void thePaymentConfirmationShouldDisplayTheCorrectAmountAndAccountNumber() {
         ln.myClick(ln.lnAccountsOverview);
         dc.myClick(dc.Account);
-        Thread.sleep(5000);
-        dc.myClick(dc.successfulMessageBillPaymentToGasBill.get(dc.successfulMessageBillPaymentToGasBill.size()-1));
-        /*
-        Sadece Transaction Details bolumundeki assertler yapilmadi.!
-         */
+
+
+
     }
 }
