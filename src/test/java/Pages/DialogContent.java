@@ -187,7 +187,19 @@ public class DialogContent extends ParentPage{
     @FindBy(xpath = "//span[@id='city-error']")
     public WebElement ContactErrorMessage;
 
+    @FindBy(xpath = "//*[text()='Bill Payment to İski Su Faturasi']")
+    public List<WebElement> accounts;
 
+
+
+    @FindBy(xpath = "//*[@id='rightPanel']//table//tr[2]/td[2]")
+    public WebElement transactionDate;
+
+    @FindBy(xpath = "//*[@id='rightPanel']//table//tr[3]/td[2]")
+    public WebElement transactionDescription;
+
+    @FindBy(xpath = "//*[@id='rightPanel']//table//tr[5]/td[2]")
+    public WebElement transactionAmount;
 
 
     public WebElement getWebElement(String strElement)
@@ -213,6 +225,10 @@ public class DialogContent extends ParentPage{
             case "recipientAccountSelector": return this.recipientAccountSelector;
             case "transferButton": return this.transferButton;
             case "amount": return this.amount;
+            case "transactionDate": return this.transactionDate;
+            case "transactionDescription": return this.transactionDescription;
+            case "transactionAmount": return this.transactionAmount;
+
 
 
         }

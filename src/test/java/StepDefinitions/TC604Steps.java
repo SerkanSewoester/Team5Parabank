@@ -9,7 +9,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class TC604Steps {
     LeftNav ln=new LeftNav(GWD.getDriver());
@@ -46,9 +48,17 @@ public class TC604Steps {
         dc.myClick(dc.accountNumberClick);
     }
 
-    @Then("The user must be able to verify the account number and type he has opened.")
-    public void theUserMustBeAbleToVerifyTheAccountNumberAndTypeHeHasOpened() {
-        dc.verifyMessageContainsText(dc.newAccountTypeAssert,"CHECKING");
+    //@Then("The user must be able to verify the account number and type he has opened.")
+    //public void theUserMustBeAbleToVerifyTheAccountNumberAndTypeHeHasOpened() {
+    //    dc.verifyMessageContainsText(dc.newAccountTypeAssert,"CHECKING");
+    //    dc.verifyMessageContainsText(dc.newAccountNumberAssert,accountNumber);
+    //}
+
+    @Then("The user must be able to verify the account number and {string} he has opened.")
+    public void theUserMustBeAbleToVerifyTheAccountNumberAndHeHasOpened(String arg0) throws InterruptedException {
+        dc.wait.until(ExpectedConditions.visibilityOf(dc.newAccountNumberAssert));
+        Thread.sleep(2000);
+        Assert.assertTrue(dc.newAccountTypeAssert.getText().toLowerCase().contains(arg0));
         dc.verifyMessageContainsText(dc.newAccountNumberAssert,accountNumber);
     }
 }

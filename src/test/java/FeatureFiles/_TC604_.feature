@@ -14,12 +14,12 @@ Feature: Create new bank account
     And User can see success message
     And User clicks on new account number
 
-    Then The user must be able to verify the account number and type he has opened.
+    Then The user must be able to verify the account number and "<type>" he has opened.
 
     Examples:
-      | accountType |
-      | CHECKING    |
-      #| SAVINGS     |
+      | accountType | type     |
+      | CHECKING    | checking |
+      | SAVINGS     | savings  |
 
 
 
