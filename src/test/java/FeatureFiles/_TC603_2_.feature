@@ -1,8 +1,14 @@
+@Payment @Regression @Smoke
 Feature: Water Bill Payment
 
-  @Payment @Regression @Smoke
+  Background:
+    Given Navigate to the website
+    When Enter valid username as "jackm123" and password as "Team5.123"
+    And Click on LoginOrSign Up button
+    Then SuccessMessage should be displayed
+
+
   Scenario: User pays a water bill successfully
-    Given the user is logged into the Para Bank website
     When the user navigates to the Bill Pay page
     And the user fills in the water bill form with valid random data
     And the user submits the payment
