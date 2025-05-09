@@ -33,6 +33,12 @@ public class LeftNav extends ParentPage{
     @FindBy(xpath = "//*[text()='Open New Account']")
     public WebElement openNewAccountButton;
 
+    @FindBy(xpath = "//a[@href='updateprofile.htm']")
+    public WebElement lnUpdateContactButton;
+
+
+
+
     public WebElement getWebElement(String strElement)
     {
         switch (strElement)
@@ -43,6 +49,8 @@ public class LeftNav extends ParentPage{
             case "lnPasswordInput" : return this.lnPasswordInput;
             case "lnBillPayButton" : return this.lnBillPayButton;
             case "lnAccountsOverview" : return this.lnAccountsOverview;
+            case "lnUpdateContactButton" : return this.lnUpdateContactButton;
+
 
         }
 
