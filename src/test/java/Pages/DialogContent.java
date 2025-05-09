@@ -156,8 +156,36 @@ public class DialogContent extends ParentPage{
 
     @FindBy(xpath = "//p[@class='error']")
     public WebElement LogInErrorText;
+/// //////////////////////////////////////////////////////
+    @FindBy(xpath = "//*[@id='customer.firstName']")
+    public WebElement ContactFirstName;
 
+    @FindBy(xpath = "//*[@id='customer.lastName']")
+    public WebElement ContactLastName;
 
+    @FindBy(xpath = "//*[@id='customer.address.street']")
+    public WebElement ContactAddress;
+
+    @FindBy(xpath = "//*[@id='customer.address.city']")
+    public WebElement ContactCity;
+
+    @FindBy(xpath = "//*[@id='customer.address.state']")
+    public WebElement ContactState;
+
+    @FindBy(xpath = "//*[@id='customer.address.zipCode']")
+    public WebElement ContactZipcode;
+
+    @FindBy(xpath = "//*[@id='customer.phoneNumber']")
+    public WebElement ContactPhone;
+
+    @FindBy(xpath = "//*[@type='button']")
+    public WebElement ContactUpdateButton;
+
+    @FindBy(xpath = "//h1[@class='title' and text()='Profile Updated']")
+    public WebElement ContactUpdateProfile;
+
+    @FindBy(xpath = "//span[@id='city-error']")
+    public WebElement ContactErrorMessage;
 
 
 
