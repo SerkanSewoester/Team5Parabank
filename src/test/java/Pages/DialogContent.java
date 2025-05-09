@@ -187,6 +187,8 @@ public class DialogContent extends ParentPage{
     @FindBy(xpath = "//span[@id='city-error']")
     public WebElement ContactErrorMessage;
 
+    @FindBy(xpath = "//*[text()='Bill Payment Complete']")
+    public WebElement successfulMessageBillPaymentComplate ;
 
 
 
