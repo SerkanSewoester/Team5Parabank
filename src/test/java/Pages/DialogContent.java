@@ -116,6 +116,7 @@ public class DialogContent extends ParentPage{
     public WebElement newAccountNumberAssert;
 
     @FindBy(xpath = "//*[@id='accountType']")
+
     public WebElement newAccountTypeAssert;
 
     @FindBy(name = "username")
