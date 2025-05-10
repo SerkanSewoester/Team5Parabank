@@ -203,12 +203,34 @@ public class DialogContent extends ParentPage{
     @FindBy(xpath = "//span[@id='city-error']")
     public WebElement ContactErrorMessage;
 
-    @FindBy(xpath = "//*[text()='Bill Payment to İski Su Faturasi']")
-    public List<WebElement> accounts;
 
 
+    @FindBy(xpath = "//*[@id='amount']")
+    public WebElement loanAmountInput;
 
+    @FindBy(xpath = "//*[@id='downPayment']")
+    public WebElement downPaymentInput;
 
+    @FindBy(xpath = "//*[@value='Apply Now']")
+    public WebElement applyNowButton;
+
+    @FindBy(xpath = "//*[@id='loanRequestApproved']//p")
+    public WebElement loanRequestResult;
+
+    @FindBy(xpath = "//*[@id='newAccountId']")
+    public WebElement loanNewAccountNumber;
+
+    @FindBy(xpath = "//*[@id='balance']")
+    public WebElement balance;
+
+    @FindBy(xpath = "//*[@id='noTransactions']")
+    public WebElement noTransactionsFountText;
+
+    @FindBy(xpath = "//*[@id='accountType']")
+    public WebElement loanAccountType;
+
+    @FindBy(xpath = "//*[@value='Go']")
+    public WebElement goButton;
 
     public WebElement getWebElement(String strElement)
     {
@@ -230,30 +252,9 @@ public class DialogContent extends ParentPage{
             case "billPayedName": return this.billPayedName;
             case "billPayedAmount": return this.billPayedAmount;
             case "accountOverviewNumber": return this.accountOverviewNumber;
-
             case "transterDetailsDate": return  this.transterDetailsDate;
             case "transterDetailsDescription": return  this.transterDetailsDescription;
             case "transterDetailsAmount": return  this.transterDetailsAmount;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             case "firstName": return this.firstName;
             case "lastName": return this.lastName;
             case "Address": return this.Address;
@@ -273,6 +274,15 @@ public class DialogContent extends ParentPage{
             case "recipientAccountSelector": return this.recipientAccountSelector;
             case "transferButton": return this.transferButton;
             case "amount": return this.amount;
+
+            case "loanAmountInput": return this.loanAmountInput;
+            case "downPaymentInput": return this.downPaymentInput;
+            case "applyNowButton": return this.applyNowButton;
+            case "loanNewAccountNumber": return this.loanNewAccountNumber;
+            case "balance": return this.balance;
+            case "noTransactionsFountText": return this.noTransactionsFountText;
+            case "loanAccountType": return this.loanAccountType;
+            case "goButton": return this.goButton;
 
 
 

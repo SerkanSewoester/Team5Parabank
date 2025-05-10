@@ -14,9 +14,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class TC604Steps {
-    LeftNav ln=new LeftNav(GWD.getDriver());
-    DialogContent dc=new DialogContent(GWD.getDriver());
-    String accountNumber="";
+    LeftNav ln = new LeftNav(GWD.getDriver());
+    DialogContent dc = new DialogContent(GWD.getDriver());
+    String accountNumber = "";
 
     @Given("Navigate to open new account page")
     public void navigateToOpenNewAccountPage() {
@@ -24,11 +24,12 @@ public class TC604Steps {
     }
 
     @When("Click user selects new account type as {string}")
-    public void clickUserSelectsNewAccountTypeAs(String accountType) throws InterruptedException {
-        Thread.sleep(2000);
-            new Select(dc.accountTypeSelect).selectByVisibleText(accountType);
-        Thread.sleep(2000);
+    public void clickUserSelectsNewAccountTypeAs(String accountType) {
+        dc.myClick(dc.accountTypeSelect);
+       // dc.wait.until(ExpectedConditions.elementToBeClickable(dc.accountTypeSelect));
 
+        Select select = new Select(dc.accountTypeSelect);
+        select.selectByVisibleText(accountType);
     }
 
     @And("User clicks open new account button")
@@ -38,8 +39,8 @@ public class TC604Steps {
 
     @And("User can see success message")
     public void userCanSeeSuccessMessage() {
-        dc.verifyMessageContainsText(dc.assertAccountText,"congratulations, your account is now open.");
-        accountNumber=dc.accountNumberClick.getText();
+        dc.verifyMessageContainsText(dc.assertAccountText, "congratulations, your account is now open.");
+        accountNumber = dc.accountNumberClick.getText();
 
     }
 
@@ -54,6 +55,6 @@ public class TC604Steps {
         WebElement a = dc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='accountType']")));
         dc.wait.until(ExpectedConditions.visibilityOf(a));
         Assert.assertTrue(dc.newAccountTypeAssert.getText().toLowerCase().contains(arg0));
-        dc.verifyMessageContainsText(dc.newAccountNumberAssert,accountNumber);
+        dc.verifyMessageContainsText(dc.newAccountNumberAssert, accountNumber);
     }
 }

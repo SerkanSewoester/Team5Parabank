@@ -36,6 +36,9 @@ public class LeftNav extends ParentPage{
     @FindBy(xpath = "//a[@href='updateprofile.htm']")
     public WebElement lnUpdateContactButton;
 
+ @FindBy(xpath = "//*[text()='Request Loan']")
+    public WebElement lnRequestLoan;
+
 
 
 
@@ -50,6 +53,7 @@ public class LeftNav extends ParentPage{
             case "lnBillPayButton" : return this.lnBillPayButton;
             case "lnAccountsOverview" : return this.lnAccountsOverview;
             case "lnUpdateContactButton" : return this.lnUpdateContactButton;
+            case "lnRequestLoan" : return this.lnRequestLoan;
 
 
         }
