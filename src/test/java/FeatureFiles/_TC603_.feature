@@ -7,7 +7,7 @@ Feature: Bill Payment Functionality
     Then SuccessMessage should be displayed
 
   @Payment @Regression @Smoke
-  Scenario Outline: : User successfully pays a water bill
+  Scenario Outline: : User successfully pays bills
     Given The user navigates to the Bill Pay page
     When The user enters the following water bill details
       | billPayeeNameInput          | <Payee Name> |
