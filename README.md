@@ -80,6 +80,19 @@ Tests are executed in the following environment:
 ### 🔧 Installation
 
 ```bash
-git clone https://github.com/your-organization/parabank-automation.git
-cd parabank-automation
+git clone https://github.com/SerkanSewoester/Team5Parabank.git
+cd Team5Parabank
 mvn clean install
+
+
+| Name                     | Role                 | GitHub                                                |
+| ------------------------ | -------------------- | ----------------------------------------------------- |
+| **Serkan Sewöster**      | Team Lead / PO       | [SerkanSewoester](https://github.com/SerkanSewoester) |
+| **Ennur Göl**            | QA Automation Tester | [ennur7](https://github.com/ennur7)                   |
+| **Burak Bora Durmaz**    | QA Automation Tester | [burakboradurmaz](https://github.com/burakboradurmaz) |
+| **Melike Emine Özyavuz** | QA Automation Tester | [melekOz2](https://github.com/melekOz2)               |
+| **İbrahim Can**          | QA Automation Tester | [ibcan9](https://github.com/ibcan9)                   |
+| **Hakan Mert**           | QA Automation Tester | [ROCK4EVA](https://github.com/ROCK4EVA)               |
+| **Murat Öksüz**          | QA Automation Tester | [muratoksuz](https://github.com/muratoksuz)           |
+| **Tuğba Yılmaz**         | QA Automation Tester | [MTY-EEE](https://github.com/MTY-EEE)                 |
+
