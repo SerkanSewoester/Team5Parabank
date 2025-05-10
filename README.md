@@ -77,13 +77,8 @@ Tests are executed in the following environment:
 - Git
 - IDE (IntelliJ IDEA, Eclipse, etc.)
 
-### 🔧 Installation
 
-```bash
-git clone https://github.com/SerkanSewoester/Team5Parabank.git
-cd Team5Parabank
-mvn clean install
-
+🤝 Contributors
 
 | Name                     | Role                 | GitHub                                                |
 |--------------------------|----------------------|--------------------------------------------------------|
@@ -95,5 +90,14 @@ mvn clean install
 | **Hakan Mert**           | QA Automation Tester | [ROCK4EVA](https://github.com/ROCK4EVA)               |
 | **Murat Öksüz**          | QA Automation Tester | [muratoksuz](https://github.com/muratoksuz)           |
 | **Tuğba Yılmaz**         | QA Automation Tester | [MTY-EEE](https://github.com/MTY-EEE)                 |
+
+### 🔧 Installation
+
+```bash
+git clone https://github.com/SerkanSewoester/Team5Parabank.git
+cd Team5Parabank
+mvn clean install
+
+
 
 
