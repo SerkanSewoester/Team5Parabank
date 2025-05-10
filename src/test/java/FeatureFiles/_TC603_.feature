@@ -2,11 +2,11 @@ Feature: Bill Payment Functionality
 
   Background:
     Given Navigate to the website
-    When Enter valid username as "sophia_m94117" and password as "sophiapass1"
+    When Enter valid username as "olivb2025" and password as "Pass123!"
     And Click on LoginOrSign Up button
     Then SuccessMessage should be displayed
 
-  @US603 @WaterBill @Regression @Smoke
+  @Payment @Regression @Smoke
   Scenario Outline: : User successfully pays a water bill
     Given The user navigates to the Bill Pay page
     When The user enters the following water bill details

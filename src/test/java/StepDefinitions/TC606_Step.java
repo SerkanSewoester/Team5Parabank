@@ -21,8 +21,8 @@ public class TC606_Step {
 
     @When("Enter username and password")
     public void enterUsernameAndPassword() {
-        ln.mySendKeys(ln.lnUsernameInput, "jackm123 ");
-        ln.mySendKeys(ln.lnPasswordInput, "Team5.123");
+        ln.mySendKeys(ln.lnUsernameInput, "olivb2025 ");
+        ln.mySendKeys(ln.lnPasswordInput, "Pass123!");
         ln.myClick(ln.lnLoginButton);
     }
 

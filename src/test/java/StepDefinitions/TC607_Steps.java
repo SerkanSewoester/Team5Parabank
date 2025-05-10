@@ -40,7 +40,7 @@ public class TC607_Steps {
     @And("The user should see the Account Type and Balance as {string}")
     public void theUserShouldSeeTheAccountTypeAndBalanceAs(String balance) {
         dc.wait.until(ExpectedConditions.textToBe(By.xpath("//*[@id='accountType']"),"LOAN"));
-        Assert.assertTrue(dc.loanAccountType.getText().contains("LOAN"));
+        Assert.assertTrue(dc.newAccountTypeAssert.getText().contains("LOAN"));
         dc.verifyMessageContainsText(dc.balance,balance);
         Assert.assertTrue(dc.noTransactionsFountText.isDisplayed());
     }

@@ -1,4 +1,6 @@
 Feature: Login Functionality
+
+  @Accounts @Smoke @Regression
   Scenario Outline: Login with invalid username and password
     Given Navigate to the website
     When Enter invalid username as "<username>" and password as "<password>"

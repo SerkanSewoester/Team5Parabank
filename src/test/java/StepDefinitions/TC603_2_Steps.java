@@ -58,7 +58,6 @@ public class TC603_2_Steps {
         dc.myClick(dc.accountOverviewNumber);
         dc.wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//*[contains(text(),'Faturasi')]"),1));
         List<WebElement> transactionBillName = GWD.getDriver().findElements(By.xpath("//*[contains(text(),'Faturasi')]"));
-        System.out.println(transactionBillName.size());
         WebElement lastElement = transactionBillName.get(transactionBillName.size() - 1);
         dc.wait.until(ExpectedConditions.elementToBeClickable(lastElement)).click();
     }
