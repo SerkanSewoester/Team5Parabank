@@ -2,9 +2,12 @@
 
 ## 📌 Overview
 
-This Java Selenium project focuses on automating test scenarios for [Parabank](https://parabank.parasoft.com/), a virtual banking application used for software testing. Although it is not a real financial system, it provides an ideal simulated environment for practicing and executing automation tests.
+## 📌 Overview
 
-The project includes end-to-end test coverage for common banking operations such as user registration, account creation, bill payment, fund transfers, contact info updates, and loan applications.
+This Java Selenium project uses the **Cucumber BDD framework** to automate test scenarios for [Parabank](https://parabank.parasoft.com/), a virtual banking application used for software testing. Although it is not a real financial system, it provides an ideal simulated environment for practicing and executing automation tests.
+
+The project includes end-to-end test coverage for common banking operations such as user registration, account creation, bill payment, fund transfers, contact information updates, and loan applications. Test cases are written using **Gherkin syntax** and implemented through **Cucumber step definitions**, ensuring a behavior-driven development (BDD) approach.
+
 
 ---
 
