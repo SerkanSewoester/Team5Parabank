@@ -235,6 +235,23 @@ public class DialogContent extends ParentPage{
     public WebElement selectedAccount;
 
 
+    // TC603_1
+
+    @FindBy(xpath = "//a[text()='Bill Payment to Elektrik Faturası Ödeme']")
+    public WebElement clickBillPaymentButtonInAccountsOverview;
+
+    @FindBy(xpath = "//td[contains(text(), '2025')]")
+    public WebElement verifyDate;
+
+    @FindBy(xpath = "//td[contains(text(),'Bill Payment to Elektrik Faturası Ödeme')]")
+    public WebElement verifyBillName;
+
+    @FindBy(xpath = "//td[b[text()='Amount:']]/following-sibling::td")
+    public WebElement verifyAmount;
+
+    //
+
+
 
 
     public WebElement getWebElement(String strElement)
