@@ -16,47 +16,63 @@ public class DialogContent extends ParentPage{
         PageFactory.initElements(GWD.getDriver(), this);
     }
 
-    @FindBy(xpath = "//input[@name='payee.name']")
-    public WebElement payeName;
+    @FindBy(xpath = "//*[@name='payee.name']")
+    public WebElement billPayeeNameInput;
 
-    @FindBy(xpath = "//input[@name='payee.address.street']")
-    public WebElement payeAddressStreet;
+    @FindBy(xpath = "//*[@name='payee.address.street']")
+    public WebElement pillPayeeAddressInput;
 
-    @FindBy(xpath = "//input[@name='payee.address.city']")
-    public WebElement payeAddressCity;
+    @FindBy(xpath = "//*[@name='payee.address.city']")
+    public WebElement billPayeeCityInput;
 
-    @FindBy(xpath = "//input[@name='payee.address.state']")
-    public WebElement payeAddressState;
+    @FindBy(xpath = "//*[@name='payee.address.state']")
+    public WebElement billPayeeStateInput;
 
-    @FindBy(xpath = "//input[@name='payee.address.zipCode']")
-    public WebElement payeAddressZipCode;
+    @FindBy(xpath = "//*[@name='payee.address.zipCode']")
+    public WebElement billPayeeZipCodeInput;
 
-    @FindBy(xpath = "//input[@name='payee.phoneNumber']")
-    public WebElement payePhoneNumber;
+    @FindBy(xpath = "//*[@name='payee.phoneNumber']")
+    public WebElement billPayeePhoneNumberInput;
 
-    @FindBy(xpath = "//input[@name='payee.accountNumber']")
-    public WebElement payeAccountNumber;
 
-    @FindBy(xpath = "//input[@name='verifyAccount']")
-    public WebElement verifyAccount;
 
-    @FindBy(xpath = "//input[@name='amount']")
-    public WebElement amountOdenecekTutar;
+    @FindBy(xpath = "//*[@name='payee.accountNumber']")
+    public WebElement billPayeeAccountInput;
 
-    @FindBy(xpath = "//input[@value='Send Payment']")
-    public WebElement buttonSendPayment;
+    @FindBy(xpath = "//*[@name='verifyAccount']")
+    public WebElement billPayeeVerifyAccountInput;
 
-    @FindBy(xpath = "//*[text()='Bill Payment Complete']")
-    public WebElement successfulMessageBillPaymentComplete;
+    @FindBy(xpath = "//*[@name='amount']")
+    public WebElement billPayeeAmountInput;
 
-    @FindBy(xpath = "//*[@id='accountTable']//tbody//a")
-    public WebElement Account;
+    @FindBy(xpath = "//*[@name='fromAccountId']")
+    public WebElement billPayeeFromAccountSelect;
 
-    @FindBy(xpath = "//*[@id='transactionTable']//a")
-    public List<WebElement> successfulMessageBillPaymentToGasBill;
+    @FindBy(xpath = "//*[@value='Send Payment']")
+    public WebElement billPayeeSendPaymentButton;
 
-    @FindBy(xpath = "//*[text()='05-05-2025']")
-    public WebElement historyDatee;
+    @FindBy(xpath = "//*[@id='billpayResult']//h1")
+    public WebElement billPaymentCompleteText;
+
+    @FindBy(xpath = "//*[@id='payeeName']")
+    public WebElement billPayedName;
+
+    @FindBy(xpath = "//*[@id='amount']")
+    public WebElement billPayedAmount;
+
+    @FindBy(xpath = "//*[@id='accountTable']//a")
+    public WebElement accountOverviewNumber;
+
+
+    @FindBy(xpath = "(//*[@id='rightPanel']//tr)[2]//td[2]")
+    public WebElement transterDetailsDate;
+
+    @FindBy(xpath = "(//*[@id='rightPanel']//tr)[3]//td[2]")
+    public WebElement transterDetailsDescription;
+
+    @FindBy(xpath = "(//*[@id='rightPanel']//tr)[5]//td[2]")
+    public WebElement transterDetailsAmount;
+
 
     @FindBy(id = "customer.firstName")
     public WebElement firstName;
@@ -116,7 +132,6 @@ public class DialogContent extends ParentPage{
     public WebElement newAccountNumberAssert;
 
     @FindBy(xpath = "//*[@id='accountType']")
-
     public WebElement newAccountTypeAssert;
 
     @FindBy(name = "username")
@@ -193,20 +208,52 @@ public class DialogContent extends ParentPage{
 
 
 
-    @FindBy(xpath = "//*[@id='rightPanel']//table//tr[2]/td[2]")
-    public WebElement transactionDate;
-
-    @FindBy(xpath = "//*[@id='rightPanel']//table//tr[3]/td[2]")
-    public WebElement transactionDescription;
-
-    @FindBy(xpath = "//*[@id='rightPanel']//table//tr[5]/td[2]")
-    public WebElement transactionAmount;
 
 
     public WebElement getWebElement(String strElement)
     {
         switch (strElement)
         {
+
+            case "billPayeeNameInput": return this.billPayeeNameInput;
+            case "pillPayeeAddressInput": return this.pillPayeeAddressInput;
+            case "billPayeeCityInput": return this.billPayeeCityInput;
+            case "billPayeeStateInput": return this.billPayeeStateInput;
+            case "billPayeeZipCodeInput": return this.billPayeeZipCodeInput;
+            case "billPayeePhoneNumberInput": return this.billPayeePhoneNumberInput;
+            case "billPayeeAccountInput": return this.billPayeeAccountInput;
+            case "billPayeeVerifyAccountInput": return this.billPayeeVerifyAccountInput;
+            case "billPayeeAmountInput": return this.billPayeeAmountInput;
+            case "billPayeeFromAccountSelect": return this.billPayeeFromAccountSelect;
+            case "billPayeeSendPaymentButton": return this.billPayeeSendPaymentButton;
+            case "billPaymentCompleteText": return this.billPaymentCompleteText;
+            case "billPayedName": return this.billPayedName;
+            case "billPayedAmount": return this.billPayedAmount;
+            case "accountOverviewNumber": return this.accountOverviewNumber;
+
+            case "transterDetailsDate": return  this.transterDetailsDate;
+            case "transterDetailsDescription": return  this.transterDetailsDescription;
+            case "transterDetailsAmount": return  this.transterDetailsAmount;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             case "firstName": return this.firstName;
             case "lastName": return this.lastName;
             case "Address": return this.Address;
@@ -226,9 +273,6 @@ public class DialogContent extends ParentPage{
             case "recipientAccountSelector": return this.recipientAccountSelector;
             case "transferButton": return this.transferButton;
             case "amount": return this.amount;
-            case "transactionDate": return this.transactionDate;
-            case "transactionDescription": return this.transactionDescription;
-            case "transactionAmount": return this.transactionAmount;
 
 
 
