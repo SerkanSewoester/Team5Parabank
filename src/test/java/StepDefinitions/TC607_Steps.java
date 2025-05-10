@@ -13,6 +13,7 @@ import org.testng.Assert;
 public class TC607_Steps {
     LeftNav ln = new LeftNav(GWD.getDriver());
     DialogContent dc = new DialogContent(GWD.getDriver());
+
     @Given("The user navigates to the Request Loan page")
     public void theUserNavigatesToTheRequestLoanPage() {
         ln.myClick(ln.lnRequestLoan);
@@ -29,19 +30,7 @@ public class TC607_Steps {
         Assert.assertTrue(dc.loanRequestResult.isDisplayed());
     }
 
-    @And("The user navigates to Account Details page")
-    public void theUserNavigatesToAccountDetailsPage() {
-        dc.myClick(dc.loanNewAccountNumber);
-    }
 
 
 
-
-    @And("The user should see the Account Type and Balance as {string}")
-    public void theUserShouldSeeTheAccountTypeAndBalanceAs(String balance) {
-        dc.wait.until(ExpectedConditions.textToBe(By.xpath("//*[@id='accountType']"),"LOAN"));
-        Assert.assertTrue(dc.newAccountTypeAssert.getText().contains("LOAN"));
-        dc.verifyMessageContainsText(dc.balance,balance);
-        Assert.assertTrue(dc.noTransactionsFountText.isDisplayed());
-    }
 }

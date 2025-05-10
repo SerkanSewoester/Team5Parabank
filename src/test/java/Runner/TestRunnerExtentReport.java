@@ -7,8 +7,7 @@ import org.testng.annotations.AfterClass;
 
 
 @CucumberOptions(
-        tags = "@Regression",
-        features = {"src/test/java/FeatureFiles"},
+        features = {"src/test/java/FeatureFiles/"},
         glue = {"StepDefinitions"},
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 

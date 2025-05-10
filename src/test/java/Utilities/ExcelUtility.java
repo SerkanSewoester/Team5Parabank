@@ -7,6 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class ExcelUtility {
@@ -36,49 +37,72 @@ public class ExcelUtility {
         return tablo;
     }
 
-    public static void writeToExcel(String path, String senaryoAdi, String testSonuc){
-        File dosya=new File(path);
+    public static void writeToExcel(String path, String scenarioName, String testResult) {
+        File file = new File(path);
+        Workbook workbook;
+        Sheet sheet;
 
         try {
-            if (!dosya.exists()) {
-                XSSFWorkbook workbook = new XSSFWorkbook();
-                XSSFSheet sheet = workbook.createSheet("TestSonuc");
+            if (!file.exists()) {
+                // Eğer dosya yoksa workbook ve sheet oluştur
+                workbook = new XSSFWorkbook();
+                sheet = workbook.createSheet("TestResult");
 
-                Row row = sheet.createRow(0);
-                Cell cell1 = row.createCell(0);cell1.setCellValue(senaryoAdi);
-                Cell cell2 = row.createCell(1);cell2.setCellValue(testSonuc);
+                // Başlık satırı ekle
+                Row header = sheet.createRow(0);
+                header.createCell(0).setCellValue("Scenario Name");
+                header.createCell(1).setCellValue("Test Result");
+                header.createCell(2).setCellValue("Date");
 
-                FileOutputStream outputStream = new FileOutputStream(path);
-                workbook.write(outputStream);
-                workbook.close();
-                outputStream.close();
-                System.out.println("Dosya oluşturuldu.");
-            }
-            else
-            {
-                FileInputStream inputStream=new FileInputStream(path);
-                Workbook workbook= WorkbookFactory.create(inputStream);
-                Sheet sheet= workbook.getSheetAt(0);
-
-                Row row = sheet.createRow(sheet.getPhysicalNumberOfRows());
-                Cell cell1 = row.createCell(0);cell1.setCellValue(senaryoAdi);
-                Cell cell2 = row.createCell(1);cell2.setCellValue(testSonuc);
-
-                inputStream.close();
-
-                FileOutputStream outputStream = new FileOutputStream(path);
-                workbook.write(outputStream);
-                workbook.close();
-                outputStream.close();
-                System.out.println("Ekleme yapıldı");
+            } else {
+                // Eğer dosya varsa oku
+                try (FileInputStream fis = new FileInputStream(file)) {
+                    workbook = WorkbookFactory.create(fis);
+                    sheet = workbook.getSheetAt(0);
+                }
             }
 
+            // Yeni satır oluştur
+            int lastRowIndex = sheet.getLastRowNum() + 1;
+            Row newRow = sheet.createRow(lastRowIndex);
+
+            // Senaryo Adı hücresi
+            newRow.createCell(0).setCellValue(scenarioName);
+
+            // Test sonucu hücresi
+            Cell resultCell = newRow.createCell(1);
+            resultCell.setCellValue(testResult);
+
+            // Tarih hücresi
+            newRow.createCell(2).setCellValue(LocalDateTime.now().toString());
+
+            // Test Sonucuna göre renkli stil oluştur
+            CellStyle style = workbook.createCellStyle();
+            Font font = workbook.createFont();
+            font.setColor(IndexedColors.WHITE.getIndex()); // Yazı rengi beyaz
+            style.setFont(font);
+            style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            if (testResult.toLowerCase().contains("pass")) {
+                style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
+            } else if (testResult.toLowerCase().contains("fail")) {
+                style.setFillForegroundColor(IndexedColors.RED.getIndex());
+            } else {
+                style.setFillForegroundColor(IndexedColors.GREY_40_PERCENT.getIndex());
+            }
+
+            resultCell.setCellStyle(style);
+
+            // Dosyayı kaydet
+            try (FileOutputStream fos = new FileOutputStream(path)) {
+                workbook.write(fos);
+            }
+            workbook.close();
+
+            System.out.println("Test sonucu yazıldı: " + scenarioName + " - " + testResult);
+
+        } catch (Exception e) {
+            System.err.println("Hata oluştu: " + e.getMessage());
         }
-        catch (Exception ex){
-            System.out.println("ex.getMessage() = " + ex.getMessage());
-        }
-
-
-
     }
 }

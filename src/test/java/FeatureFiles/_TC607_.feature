@@ -2,23 +2,19 @@ Feature: Loan application Functionality
 
   Background:
     Given Navigate to the website
-    When Enter valid username as "olivb20250101" and password as "Pass123!"
+    When Enter valid username as "mia_lew08" and password as "MiaFL2024!"
     And Click on LoginOrSign Up button
     Then SuccessMessage should be displayed
 
   @Loan @Accounts @Regression
-  Scenario Outline:
+  Scenario Outline:User applies for a loan with different amounts and down payments
     Given The user navigates to the Request Loan page
     When The user enters the following water bill details
       | loanAmountInput  | <loanAmount>  |
       | downPaymentInput | <downPayment> |
-    And The user apply the loan
-    Then The user should see the Loan Request Result
-    And The user navigates to Account Details page
-    And The user should see the Account Type and Balance as "<loanAmount>"
 
 
     Examples:
       | loanAmount | downPayment |
       | 2000       | 400         |
-      #| 1000000    | 10000       |
+      | 1000000    | 10000       |

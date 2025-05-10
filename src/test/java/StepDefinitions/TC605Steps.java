@@ -44,7 +44,6 @@ public class TC605Steps {
         targetAccount=dc.selectedAccount.getText();
         dc.myClick(dc.transferButton);
 
-        System.out.println(targetAccount);
 
     }
 
