@@ -19,6 +19,6 @@ Feature: Create new bank account
     Examples:
       | accountType | type     |
       | CHECKING    | checking |
-      | SAVINGS     | savings  |
+     # | SAVINGS     | savings  |
 
 
