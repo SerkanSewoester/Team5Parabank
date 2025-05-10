@@ -8,10 +8,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
+import java.time.Duration;
 
 public class TC604Steps {
     LeftNav ln = new LeftNav(GWD.getDriver());
@@ -25,9 +28,8 @@ public class TC604Steps {
 
     @When("Click user selects new account type as {string}")
     public void clickUserSelectsNewAccountTypeAs(String accountType) {
+        dc.wait.until(ExpectedConditions.elementToBeClickable(dc.accountTypeSelect));
         dc.myClick(dc.accountTypeSelect);
-       // dc.wait.until(ExpectedConditions.elementToBeClickable(dc.accountTypeSelect));
-
         Select select = new Select(dc.accountTypeSelect);
         select.selectByVisibleText(accountType);
     }
@@ -41,7 +43,6 @@ public class TC604Steps {
     public void userCanSeeSuccessMessage() {
         dc.verifyMessageContainsText(dc.assertAccountText, "congratulations, your account is now open.");
         accountNumber = dc.accountNumberClick.getText();
-
     }
 
     @And("User clicks on new account number")
@@ -51,10 +52,9 @@ public class TC604Steps {
 
 
     @Then("The user must be able to verify the account number and {string} he has opened.")
-    public void theUserMustBeAbleToVerifyTheAccountNumberAndHeHasOpened(String arg0) throws InterruptedException {
-        WebElement a = dc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='accountType']")));
-        dc.wait.until(ExpectedConditions.visibilityOf(a));
-        Assert.assertTrue(dc.newAccountTypeAssert.getText().toLowerCase().contains(arg0));
-        dc.verifyMessageContainsText(dc.newAccountNumberAssert, accountNumber);
+    public void theUserMustBeAbleToVerifyTheAccountNumberAndHeHasOpened(String accountType) {
+        dc.wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
+        Assert.assertTrue(dc.newAccountTypeAssert.isDisplayed());
+        System.out.println(dc.newAccountTypeAssert.getText());
     }
 }

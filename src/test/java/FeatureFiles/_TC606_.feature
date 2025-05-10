@@ -5,6 +5,7 @@ Feature: Update Contact Info
     When Enter username and password
     Then should be login successfully
 
+    @Contact @Accounts
   Scenario: Update user contact information
     Given Navigate to update contact info
     When User enters new valid data

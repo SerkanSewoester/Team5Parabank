@@ -1,13 +1,14 @@
 Feature: Create new bank account
 
+
   Background:
     Given Navigate to the website
-    When Enter valid username as "jackm123" and password as "Team5.123"
+    When Enter valid username as "olivb2025" and password as "Pass123!"
     And Click on LoginOrSign Up button
     Then SuccessMessage should be displayed
 
+  @Accounts @Smoke @Regression
   Scenario Outline: Create new account
-
     Given Navigate to open new account page
     When Click user selects new account type as "<accountType>"
     And User clicks open new account button
@@ -18,7 +19,7 @@ Feature: Create new bank account
 
     Examples:
       | accountType | type     |
-      | CHECKING    | checking |
-     # | SAVINGS     | savings  |
+      | CHECKING    | CHECKING |
+     # | SAVINGS     | SAVINGS  |
 
 

@@ -1,11 +1,16 @@
 Feature: Transfer between accounts
 
   Background:
-    Given Navigate to ParaBank
-    When Enter username and password and click login button
-    Then User should login successfully
+    Given Navigate to the website
+    When Enter valid username as "olivb2025" and password as "Pass123!"
+    And Click on LoginOrSign Up button
+    Then SuccessMessage should be displayed
 
   @Payment @Regression
   Scenario: Send money between accounts
+    Given Navigate to Transfer Funds page
+    And Enter transfer information and submit
+    And The user should be see the success message
+    And The user navigates to Accounts Overview page
+    And User confirms that the money transfer was successful
 
-    Given enter transfer information and submit

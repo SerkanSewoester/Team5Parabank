@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.util.List;
@@ -146,10 +147,10 @@ public class DialogContent extends ParentPage{
     @FindBy(id = "amount")
     public WebElement amount;
 
-    @FindBy(name = "fromAccountId")
+    @FindBy(xpath = "//*[@id='fromAccountId']")
     public WebElement senderAccountSelector;
 
-    @FindBy(name = "toAccountId")
+    @FindBy(xpath = "//*[@id='toAccountId']")
     public WebElement recipientAccountSelector;
 
     @FindBy(xpath = "//input[@value='Transfer']")
@@ -203,8 +204,6 @@ public class DialogContent extends ParentPage{
     @FindBy(xpath = "//span[@id='city-error']")
     public WebElement ContactErrorMessage;
 
-
-
     @FindBy(xpath = "//*[@id='amount']")
     public WebElement loanAmountInput;
 
@@ -226,11 +225,17 @@ public class DialogContent extends ParentPage{
     @FindBy(xpath = "//*[@id='noTransactions']")
     public WebElement noTransactionsFountText;
 
-    @FindBy(xpath = "//*[@id='accountType']")
-    public WebElement loanAccountType;
-
     @FindBy(xpath = "//*[@value='Go']")
     public WebElement goButton;
+
+    @FindBy(xpath = "//*[@id='showResult']//h1")
+    public WebElement transferCompleteText;
+
+    @FindBy(xpath = "(//*[@selected='selected'])[2]")
+    public WebElement selectedAccount;
+
+
+
 
     public WebElement getWebElement(String strElement)
     {
@@ -274,15 +279,16 @@ public class DialogContent extends ParentPage{
             case "recipientAccountSelector": return this.recipientAccountSelector;
             case "transferButton": return this.transferButton;
             case "amount": return this.amount;
-
+            case "newAccountTypeAssert": return this.newAccountTypeAssert;
             case "loanAmountInput": return this.loanAmountInput;
             case "downPaymentInput": return this.downPaymentInput;
             case "applyNowButton": return this.applyNowButton;
             case "loanNewAccountNumber": return this.loanNewAccountNumber;
             case "balance": return this.balance;
             case "noTransactionsFountText": return this.noTransactionsFountText;
-            case "loanAccountType": return this.loanAccountType;
             case "goButton": return this.goButton;
+            case "transferCompleteText": return this.transferCompleteText;
+            case "selectedAccount": return this.selectedAccount;
 
 
 
@@ -295,4 +301,7 @@ public class DialogContent extends ParentPage{
         Assert.assertTrue(element.getText().toLowerCase().contains(serchText.toLowerCase()));
 
     }
+
+
+
 }

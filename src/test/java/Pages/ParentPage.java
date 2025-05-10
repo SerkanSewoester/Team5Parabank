@@ -33,9 +33,9 @@ public class ParentPage {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public static String random(int max){
+    public static int random(int max){
         int number =  (int)(Math.random()* max);
-        return String.valueOf(number);
+        return number;
     }
 
 
