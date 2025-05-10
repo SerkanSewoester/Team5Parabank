@@ -22,8 +22,3 @@ Feature: Create new bank account
       | SAVINGS     | savings  |
 
 
-
-
-
-
-

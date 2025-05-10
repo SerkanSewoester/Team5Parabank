@@ -48,16 +48,11 @@ public class TC604Steps {
         dc.myClick(dc.accountNumberClick);
     }
 
-    //@Then("The user must be able to verify the account number and type he has opened.")
-    //public void theUserMustBeAbleToVerifyTheAccountNumberAndTypeHeHasOpened() {
-    //    dc.verifyMessageContainsText(dc.newAccountTypeAssert,"CHECKING");
-    //    dc.verifyMessageContainsText(dc.newAccountNumberAssert,accountNumber);
-    //}
 
     @Then("The user must be able to verify the account number and {string} he has opened.")
     public void theUserMustBeAbleToVerifyTheAccountNumberAndHeHasOpened(String arg0) throws InterruptedException {
-        dc.wait.until(ExpectedConditions.visibilityOf(dc.newAccountNumberAssert));
-        Thread.sleep(2000);
+        WebElement a = dc.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='accountType']")));
+        dc.wait.until(ExpectedConditions.visibilityOf(a));
         Assert.assertTrue(dc.newAccountTypeAssert.getText().toLowerCase().contains(arg0));
         dc.verifyMessageContainsText(dc.newAccountNumberAssert,accountNumber);
     }
