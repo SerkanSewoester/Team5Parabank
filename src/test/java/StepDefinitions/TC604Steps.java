@@ -55,6 +55,6 @@ public class TC604Steps {
     public void theUserMustBeAbleToVerifyTheAccountNumberAndHeHasOpened(String accountType) {
         dc.wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
         Assert.assertTrue(dc.newAccountTypeAssert.isDisplayed());
-        System.out.println(dc.newAccountTypeAssert.getText());
+
     }
 }

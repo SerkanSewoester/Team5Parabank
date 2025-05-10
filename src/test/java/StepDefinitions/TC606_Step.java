@@ -21,8 +21,8 @@ public class TC606_Step {
 
     @When("Enter username and password")
     public void enterUsernameAndPassword() {
-        ln.mySendKeys(ln.lnUsernameInput, "olivb2025 ");
-        ln.mySendKeys(ln.lnPasswordInput, "Pass123!");
+        ln.mySendKeys(ln.lnUsernameInput, "mia_lee1 ");
+        ln.mySendKeys(ln.lnPasswordInput, "MiaFL2024!");
         ln.myClick(ln.lnLoginButton);
     }
 
@@ -30,7 +30,7 @@ public class TC606_Step {
     public void shouldBeLoginSuccessfully() {
         Assert.assertTrue(dc.LogInSuccessText.isDisplayed());
     }
-////////////////////////////////////////////////////////////////
+
     @Given("Navigate to update contact info")
     public void navigateToUpdateContactInfo() {
         ln.myClick(ln.lnUpdateContactButton);

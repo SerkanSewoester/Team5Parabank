@@ -22,8 +22,8 @@ public class TC603_1_Steps {
 
     @When("The user types username and password and clicks on the login button")
     public void theUserTypesUsernameAndPasswordAndClicksOnTheLoginButton() throws InterruptedException {
-        ln.mySendKeys(ln.lnUsernameInput, "jackm123");
-        ln.mySendKeys(ln.lnPasswordInput, "Team5.123");
+        ln.mySendKeys(ln.lnUsernameInput, "mia_le1");
+        ln.mySendKeys(ln.lnPasswordInput, "MiaFL2024!");
         ln.myClick(ln.lnLoginButton);
         Thread.sleep(2000);
     }
