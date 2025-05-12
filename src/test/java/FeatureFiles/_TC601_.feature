@@ -28,7 +28,7 @@ Feature: Create account
       | firstName | lastName | Address        | City    | State | ZipCode | Phone          | SSN         | UserName   | Password | Confirm  |
        #| Olivia    | Bennett  | 849 Sunset Blvd  | Denver  | CO    | 80203   | (303) 555-6789 | 537-29-6481 | olivb801  | Pass123!   | Pass123!   |
       #| Ethan     | Carter   | 612 Maple Lane | Seattle | WA    | 98101   | (206) 555-2376 | 472-84-3159 | ethcar8910 | Eth@2025 | Eth@2025 |
-      | Mia       | Lewis    | 3912 Pine Street | Miami   | FL    | 33101   | (305) 555-9988 | 381-74-5293 | mia_lee4 | MiaFL2024! | MiaFL2024! |
+      | Daniel    | Carter   | 742 Elm Avenue   | Austin  | TX    | 73301   | (512) 555-3746 | 483-65-2741 | dan_c89  | Tx!7rV2l9  | Tx!7rV2l9  |
 
 
 

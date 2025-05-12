@@ -1,8 +1,9 @@
 package Utilities;
 
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,28 +13,31 @@ import java.util.ArrayList;
 
 public class ExcelUtility {
 
+    private static final Logger logger = LoggerFactory.getLogger(ExcelUtility.class);
+
     public static ArrayList<ArrayList<String>> getData(String path, String sheetName, int sutunSayisi) {
         ArrayList<ArrayList<String>> tablo = new ArrayList<>();
-        Sheet sheet=null;
+        Sheet sheet = null;
 
-        try {
-            FileInputStream inputStream = new FileInputStream(path);
+        try (FileInputStream inputStream = new FileInputStream(path)) {
             Workbook workbook = WorkbookFactory.create(inputStream);
             sheet = workbook.getSheet(sheetName);
+            logger.info("Excel dosyası başarıyla okundu: {} | Sayfa: {}", path, sheetName);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            logger.error("Excel verileri okunurken hata oluştu. Dosya: {}, Sayfa: {} | Hata: {}", path, sheetName, ex.getMessage());
+            return tablo;
         }
 
-        for (int i = 0; i < sheet.getPhysicalNumberOfRows(); i++) {  // tüm satırlardaki
-
+        for (int i = 0; i < sheet.getPhysicalNumberOfRows(); i++) {
             ArrayList<String> satir = new ArrayList<>();
-            for (int j = 0; j < sutunSayisi; j++) {  // istenen sütun sayısı kadar
-                satir.add(sheet.getRow(i).getCell(j).toString());  // bu döngü ile tüm satır okundu
+            for (int j = 0; j < sutunSayisi; j++) {
+                Cell cell = sheet.getRow(i).getCell(j);
+                satir.add(cell != null ? cell.toString() : "");
             }
-
             tablo.add(satir);
         }
 
+        logger.debug("Toplam {} satır veri başarıyla okundu.", tablo.size());
         return tablo;
     }
 
@@ -44,42 +48,33 @@ public class ExcelUtility {
 
         try {
             if (!file.exists()) {
-                // Eğer dosya yoksa workbook ve sheet oluştur
+                logger.warn("Excel dosyası bulunamadı. Yeni dosya oluşturuluyor: {}", path);
                 workbook = new XSSFWorkbook();
                 sheet = workbook.createSheet("TestResult");
 
-                // Başlık satırı ekle
                 Row header = sheet.createRow(0);
                 header.createCell(0).setCellValue("Scenario Name");
                 header.createCell(1).setCellValue("Test Result");
                 header.createCell(2).setCellValue("Date");
-
             } else {
-                // Eğer dosya varsa oku
                 try (FileInputStream fis = new FileInputStream(file)) {
                     workbook = WorkbookFactory.create(fis);
                     sheet = workbook.getSheetAt(0);
+                    logger.info("Mevcut Excel dosyası açıldı: {}", path);
                 }
             }
 
-            // Yeni satır oluştur
             int lastRowIndex = sheet.getLastRowNum() + 1;
             Row newRow = sheet.createRow(lastRowIndex);
-
-            // Senaryo Adı hücresi
             newRow.createCell(0).setCellValue(scenarioName);
-
-            // Test sonucu hücresi
             Cell resultCell = newRow.createCell(1);
             resultCell.setCellValue(testResult);
-
-            // Tarih hücresi
             newRow.createCell(2).setCellValue(LocalDateTime.now().toString());
 
-            // Test Sonucuna göre renkli stil oluştur
+
             CellStyle style = workbook.createCellStyle();
             Font font = workbook.createFont();
-            font.setColor(IndexedColors.WHITE.getIndex()); // Yazı rengi beyaz
+            font.setColor(IndexedColors.WHITE.getIndex());
             style.setFont(font);
             style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
@@ -93,16 +88,15 @@ public class ExcelUtility {
 
             resultCell.setCellStyle(style);
 
-            // Dosyayı kaydet
             try (FileOutputStream fos = new FileOutputStream(path)) {
                 workbook.write(fos);
             }
-            workbook.close();
 
-            System.out.println("Test sonucu yazıldı: " + scenarioName + " - " + testResult);
+            workbook.close();
+            logger.info("Test sonucu başarıyla Excel dosyasına yazıldı: {} | Sonuç: {}", scenarioName, testResult);
 
         } catch (Exception e) {
-            System.err.println("Hata oluştu: " + e.getMessage());
+            logger.error("Excel'e yazma işlemi sırasında hata oluştu. Dosya: {} | Hata: {}", path, e.getMessage());
         }
     }
 }
